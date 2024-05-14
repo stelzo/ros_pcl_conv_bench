@@ -1,0 +1,139 @@
+[package]
+name = "rpcl2_benchmark"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand = "0.8"
+ros_pointcloud2 = { git = "https://github.com/stelzo/ros_pointcloud2", features = [
+    "derive",
+    "rayon",
+] }
+
+[[bin]]
+name = "roundtrip_60k"
+path = "src/roundtrip_60k.rs"
+
+[[bin]]
+name = "roundtrip_16k"
+path = "src/roundtrip_16k.rs"
+
+[[bin]]
+name = "roundtrip_120k"
+path = "src/roundtrip_120k.rs"
+
+[[bin]]
+name = "roundtrip_500k"
+path = "src/roundtrip_500k.rs"
+
+[[bin]]
+name = "roundtrip_1_5m"
+path = "src/roundtrip_1_5m.rs"
+
+[[bin]]
+name = "roundtrip_vec_60k"
+path = "src/roundtrip_vec_60k.rs"
+
+[[bin]]
+name = "roundtrip_vec_16k"
+path = "src/roundtrip_vec_16k.rs"
+
+[[bin]]
+name = "roundtrip_vec_120k"
+path = "src/roundtrip_vec_120k.rs"
+
+[[bin]]
+name = "roundtrip_vec_500k"
+path = "src/roundtrip_vec_500k.rs"
+
+[[bin]]
+name = "roundtrip_vec_1_5m"
+path = "src/roundtrip_vec_1_5m.rs"
+
+[[bin]]
+name = "compute_60k"
+path = "src/compute_60k.rs"
+
+[[bin]]
+name = "compute_16k"
+path = "src/compute_16k.rs"
+
+[[bin]]
+name = "compute_par_par_60k"
+path = "src/compute_par_par_60k.rs"
+
+[[bin]]
+name = "compute_par_par_16k"
+path = "src/compute_par_par_16k.rs"
+
+[[bin]]
+name = "compute_par_par_120k"
+path = "src/compute_par_par_120k.rs"
+
+[[bin]]
+name = "compute_par_par_500k"
+path = "src/compute_par_par_500k.rs"
+
+[[bin]]
+name = "compute_par_par_1_5m"
+path = "src/compute_par_par_1_5m.rs"
+
+[[bin]]
+name = "filter_60k"
+path = "src/filter_60k.rs"
+
+[[bin]]
+name = "filter_120k"
+path = "src/filter_120k.rs"
+
+[[bin]]
+name = "filter_500k"
+path = "src/filter_500k.rs"
+
+[[bin]]
+name = "filter_1_5m"
+path = "src/filter_1_5m.rs"
+
+[[bin]]
+name = "filter_16k"
+path = "src/filter_16k.rs"
+
+[[bin]]
+name = "filter_vec_60k"
+path = "src/filter_vec_60k.rs"
+
+[[bin]]
+name = "filter_vec_120k"
+path = "src/filter_vec_120k.rs"
+
+[[bin]]
+name = "filter_vec_500k"
+path = "src/filter_vec_500k.rs"
+
+[[bin]]
+name = "filter_vec_1_5m"
+path = "src/filter_vec_1_5m.rs"
+
+[[bin]]
+name = "filter_vec_16k"
+path = "src/filter_vec_16k.rs"
+
+[[bin]]
+name = "filter_par_par_60k"
+path = "src/filter_par_par_60k.rs"
+
+[[bin]]
+name = "filter_par_par_120k"
+path = "src/filter_par_par_120k.rs"
+
+[[bin]]
+name = "filter_par_par_1_5m"
+path = "src/filter_par_par_1_5m.rs"
+
+[[bin]]
+name = "filter_par_par_500k"
+path = "src/filter_par_par_500k.rs"
+
+[[bin]]
+name = "filter_par_par_16k"
+path = "src/filter_par_par_16k.rs"
