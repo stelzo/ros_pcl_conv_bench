@@ -21,7 +21,7 @@ You can plot them with `python3 plot.py`.
 
 Run `make clean` for deleting all generated files.
 
-The following measurements are from a NVIDIA Jetson Orin AGX with JP6 and auto generated with output of `hyperfine`.
+The following measurements are from an Intel i7-14700 and auto generated with output of `hyperfine`.
 
 # Results
 
@@ -137,4 +137,3 @@ The following measurements are from a NVIDIA Jetson Orin AGX with JP6 and auto g
 | `./rpcl2/target/release/filter_par_par_120k` | 14.8 ± 1.2 | 13.3 | 20.4 | 1.00 |
 | `./rpcl2/target/release/filter_vec_120k` | 38.9 ± 4.5 | 35.5 | 55.4 | 2.62 ± 0.37 |
 | `./rpcl2/target/release/filter_120k` | 53.3 ± 0.6 | 52.5 | 56.8 | 3.59 ± 0.29 |
-
