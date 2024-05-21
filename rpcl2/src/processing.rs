@@ -100,14 +100,15 @@ fn minus(point1: &PointXYZ, point2: &PointXYZ) -> PointXYZ {
     }
 }
 
-pub fn generate_random_pointcloud(num_points: usize, min: f32, max: f32) -> Vec<PointXYZ> {
+pub fn generate_random_pointcloud(num_points: usize, min: f32, max: f32) -> Vec<PointXYZI> {
     let mut rng = rand::thread_rng();
     let mut pointcloud = Vec::with_capacity(num_points);
     for _ in 0..num_points {
-        let point = PointXYZ {
+        let point = PointXYZI {
             x: rng.gen_range(min..max),
             y: rng.gen_range(min..max),
             z: rng.gen_range(min..max),
+            intensity: rng.gen_range(0.0..1.0),
         };
         pointcloud.push(point);
     }
@@ -166,14 +167,14 @@ pub fn heavy_computing(point: &PointXYZ, iterations: u32) -> f32 {
     result
 }
 
-pub fn roundtrip_vec(cloud: Vec<PointXYZ>) -> bool {
+pub fn roundtrip_vec(cloud: Vec<PointXYZI>) -> bool {
     let orig_len = cloud.len();
     let internal_msg = PointCloud2Msg::try_from_vec(cloud).unwrap();
     let total: Vec<PointXYZ> = internal_msg.try_into_vec().unwrap();
     orig_len == total.len()
 }
 
-pub fn roundtrip(cloud: Vec<PointXYZ>) -> bool {
+pub fn roundtrip(cloud: Vec<PointXYZI>) -> bool {
     let orig_len = cloud.len();
     let internal_msg = PointCloud2Msg::try_from_iter(cloud).unwrap();
     let total = internal_msg
@@ -187,7 +188,7 @@ fn point_inside_x_range(point: &PointXYZ, min: f32, max: f32) -> bool {
     point.x >= min && point.x <= max
 }
 
-pub fn roundtrip_filter_vec(cloud: Vec<PointXYZ>) -> bool {
+pub fn roundtrip_filter_vec(cloud: Vec<PointXYZI>) -> bool {
     let orig_len = cloud.len();
     let internal_msg = PointCloud2Msg::try_from_vec(cloud).unwrap();
     let total: Vec<PointXYZ> = internal_msg
@@ -198,7 +199,7 @@ pub fn roundtrip_filter_vec(cloud: Vec<PointXYZ>) -> bool {
     orig_len > total.len()
 }
 
-pub fn roundtrip_filter(cloud: Vec<PointXYZ>) -> bool {
+pub fn roundtrip_filter(cloud: Vec<PointXYZI>) -> bool {
     let orig_len = cloud.len();
     let internal_msg = PointCloud2Msg::try_from_iter(cloud).unwrap();
     let total: Vec<PointXYZ> = internal_msg
@@ -209,7 +210,7 @@ pub fn roundtrip_filter(cloud: Vec<PointXYZ>) -> bool {
     orig_len > total.len()
 }
 
-pub fn roundtrip_filter_par_par(cloud: Vec<PointXYZ>) -> bool {
+pub fn roundtrip_filter_par_par(cloud: Vec<PointXYZI>) -> bool {
     let orig_len = cloud.len();
     let internal_msg = PointCloud2Msg::try_from_par_iter(cloud.into_par_iter()).unwrap();
     let total: Vec<PointXYZ> = internal_msg
@@ -220,7 +221,7 @@ pub fn roundtrip_filter_par_par(cloud: Vec<PointXYZ>) -> bool {
     orig_len > total.len()
 }
 
-pub fn roundtrip_computing(cloud: Vec<PointXYZ>) -> bool {
+pub fn roundtrip_computing(cloud: Vec<PointXYZI>) -> bool {
     let internal_msg = PointCloud2Msg::try_from_iter(cloud).unwrap();
     let total = internal_msg
         .try_into_iter()
@@ -230,7 +231,7 @@ pub fn roundtrip_computing(cloud: Vec<PointXYZ>) -> bool {
     total > 0.0
 }
 
-pub fn roundtrip_computing_vec(cloud: Vec<PointXYZ>) -> bool {
+pub fn roundtrip_computing_vec(cloud: Vec<PointXYZI>) -> bool {
     let internal_msg = PointCloud2Msg::try_from_vec(cloud).unwrap();
     let total: f32 = internal_msg
         .try_into_vec()
@@ -241,7 +242,7 @@ pub fn roundtrip_computing_vec(cloud: Vec<PointXYZ>) -> bool {
     total > 0.0
 }
 
-pub fn roundtrip_computing_par_par(cloud: Vec<PointXYZ>) -> bool {
+pub fn roundtrip_computing_par_par(cloud: Vec<PointXYZI>) -> bool {
     let internal_msg = PointCloud2Msg::try_from_par_iter(cloud.into_par_iter()).unwrap();
     let total = internal_msg
         .try_into_par_iter()

@@ -5,10 +5,7 @@ edition = "2021"
 
 [dependencies]
 rand = "0.8"
-ros_pointcloud2 = { git = "https://github.com/stelzo/ros_pointcloud2", features = [
-    "derive",
-    "rayon",
-] }
+ros_pointcloud2 = { version = "0.5.0-rc.2", features = ["rayon"] }
 
 [[bin]]
 name = "roundtrip_60k"

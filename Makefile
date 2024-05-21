@@ -6,7 +6,7 @@ build:
 	@echo "Building CMake project..."
 	@colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 	@echo "Building Rust project..."
-	@cd rpcl2 && cargo build --release && cd ..
+	@cd rpcl2 && RUSTFLAGS="-C target-cpu=native" cargo build --release && cd ..
 
 clean:
 	@echo "Cleaning project..."
@@ -54,6 +54,3 @@ run: build
 	@echo "\n—————————————\n"
 	@echo "... finished."
 	@./populate.sh
-
-
-
